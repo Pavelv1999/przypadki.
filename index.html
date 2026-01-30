@@ -1,0 +1,1258 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Падежи польского языка | Полный гид</title>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&family=Spectral:wght@400;600;700&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --primary: #1a472a;
+            --secondary: #2d5f3f;
+            --accent: #d4af37;
+            --bg-light: #f8f6f1;
+            --bg-dark: #0d1b0f;
+            --text-dark: #1a1a1a;
+            --text-light: #e8e8e8;
+            --border: #c4b5a0;
+        }
+
+        body {
+            font-family: 'Spectral', serif;
+            background: var(--bg-light);
+            color: var(--text-dark);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        body::before {
+            content: '';
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: repeating-linear-gradient(90deg, transparent, transparent 79px, rgba(26, 71, 42, 0.03) 79px, rgba(26, 71, 42, 0.03) 80px);
+            pointer-events: none;
+            z-index: 0;
+        }
+
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0 2rem;
+            position: relative;
+            z-index: 1;
+        }
+
+        header {
+            background: var(--primary);
+            color: var(--text-light);
+            padding: 3rem 0;
+            text-align: center;
+            border-bottom: 4px solid var(--accent);
+            position: relative;
+            overflow: hidden;
+        }
+
+        header::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(212, 175, 55, 0.1) 0%, transparent 70%);
+            animation: pulse 8s ease-in-out infinite;
+        }
+
+        @keyframes pulse {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.1); }
+        }
+
+        h1 {
+            font-family: 'Playfair Display', serif;
+            font-size: 4rem;
+            font-weight: 900;
+            letter-spacing: -2px;
+            margin-bottom: 0.5rem;
+            position: relative;
+            text-transform: uppercase;
+        }
+
+        .subtitle {
+            font-size: 1.3rem;
+            opacity: 0.9;
+            font-weight: 400;
+            letter-spacing: 3px;
+        }
+
+        nav {
+            background: var(--secondary);
+            padding: 1.5rem 0;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
+        }
+
+        .nav-container {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            flex-wrap: wrap;
+        }
+
+        .nav-btn {
+            background: none;
+            border: 2px solid transparent;
+            color: var(--text-light);
+            font-family: 'Spectral', serif;
+            font-size: 1.1rem;
+            font-weight: 600;
+            padding: 0.7rem 1.5rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .nav-btn::before {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 0;
+            background: var(--accent);
+            transition: height 0.3s ease;
+            z-index: -1;
+        }
+
+        .nav-btn:hover::before,
+        .nav-btn.active::before {
+            height: 100%;
+        }
+
+        .nav-btn:hover,
+        .nav-btn.active {
+            color: var(--primary);
+            border-color: var(--accent);
+        }
+
+        main {
+            padding: 4rem 0;
+        }
+
+        .case-section {
+            display: none;
+            animation: fadeIn 0.6s ease;
+        }
+
+        .case-section.active {
+            display: block;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .case-card {
+            background: white;
+            border: 3px solid var(--border);
+            padding: 3rem;
+            margin-bottom: 3rem;
+            box-shadow: 12px 12px 0 rgba(26, 71, 42, 0.1);
+            transition: all 0.3s ease;
+            position: relative;
+        }
+
+        .case-card:hover {
+            box-shadow: 16px 16px 0 rgba(26, 71, 42, 0.15);
+            transform: translate(-2px, -2px);
+        }
+
+        .case-title {
+            font-family: 'Playfair Display', serif;
+            font-size: 3rem;
+            color: var(--primary);
+            margin-bottom: 0.5rem;
+            border-bottom: 4px solid var(--accent);
+            display: inline-block;
+            padding-bottom: 0.5rem;
+        }
+
+        .case-subtitle {
+            font-size: 1.3rem;
+            color: var(--secondary);
+            margin-bottom: 2rem;
+            font-style: italic;
+        }
+
+        .memory-box {
+            background: linear-gradient(135deg, #fff9e6 0%, #ffe8cc 100%);
+            border-left: 6px solid var(--accent);
+            padding: 2rem;
+            margin: 2rem 0;
+        }
+
+        .memory-box h3 {
+            font-family: 'Playfair Display', serif;
+            color: var(--primary);
+            font-size: 1.8rem;
+            margin-bottom: 1rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .memory-box h3::before {
+            content: '💡';
+            font-size: 2rem;
+        }
+
+        .comparison-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1.5rem;
+            margin: 2rem 0;
+        }
+
+        .comparison-item {
+            background: white;
+            border: 2px solid var(--border);
+            padding: 1.5rem;
+            position: relative;
+        }
+
+        .comparison-item::before {
+            content: '';
+            position: absolute;
+            top: -2px;
+            left: -2px;
+            right: -2px;
+            height: 6px;
+            background: var(--accent);
+        }
+
+        .comparison-label {
+            font-weight: 700;
+            color: var(--primary);
+            font-size: 1.2rem;
+            margin-bottom: 0.5rem;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: separate;
+            border-spacing: 0;
+            margin: 2rem 0;
+            background: white;
+            overflow: hidden;
+        }
+
+        thead {
+            background: var(--primary);
+            color: var(--text-light);
+        }
+
+        th {
+            padding: 1.2rem;
+            text-align: left;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            font-size: 0.95rem;
+        }
+
+        td {
+            padding: 1.2rem;
+            border-bottom: 1px solid var(--border);
+        }
+
+        tbody tr:hover {
+            background: rgba(212, 175, 55, 0.1);
+        }
+
+        .feature-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin: 2rem 0;
+        }
+
+        .feature-box {
+            background: white;
+            border: 2px solid var(--border);
+            padding: 2rem;
+            text-align: center;
+            transition: all 0.3s ease;
+        }
+
+        .feature-box:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+        }
+
+        .feature-icon {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+        }
+
+        .feature-title {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.5rem;
+            color: var(--primary);
+            margin-bottom: 0.5rem;
+        }
+
+        .examples-grid {
+            display: grid;
+            gap: 1.5rem;
+            margin: 2rem 0;
+        }
+
+        .example {
+            background: #f5f5f5;
+            padding: 1.5rem;
+            border-left: 4px solid var(--secondary);
+            font-size: 1.1rem;
+            transition: all 0.3s ease;
+        }
+
+        .example:hover {
+            background: #ececec;
+            border-left-width: 8px;
+        }
+
+        .example strong {
+            color: var(--primary);
+            font-weight: 700;
+        }
+
+        .quiz-section {
+            background: var(--secondary);
+            color: var(--text-light);
+            padding: 3rem;
+            margin: 3rem 0;
+            text-align: center;
+        }
+
+        .quiz-btn {
+            background: var(--accent);
+            color: var(--primary);
+            border: none;
+            padding: 1rem 3rem;
+            font-size: 1.2rem;
+            font-weight: 700;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            margin-top: 1rem;
+        }
+
+        .quiz-btn:hover {
+            background: #e6c348;
+            transform: scale(1.05);
+        }
+
+        footer {
+            background: var(--bg-dark);
+            color: var(--text-light);
+            text-align: center;
+            padding: 2rem;
+            margin-top: 4rem;
+        }
+
+        .verb-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+            gap: 1rem;
+            margin: 1.5rem 0;
+        }
+
+        .verb-item {
+            background: white;
+            border: 2px solid var(--border);
+            padding: 1rem;
+            text-align: center;
+            transition: all 0.2s ease;
+        }
+
+        .verb-item:hover {
+            background: var(--bg-light);
+            border-color: var(--accent);
+        }
+
+        .verb-item strong {
+            display: block;
+            color: var(--primary);
+            margin-bottom: 0.3rem;
+        }
+
+        .verb-item small {
+            color: #666;
+        }
+
+        .decorative-corner {
+            position: absolute;
+            width: 100px;
+            height: 100px;
+            border: 3px solid var(--accent);
+        }
+
+        .decorative-corner.top-left {
+            top: 20px;
+            left: 20px;
+            border-right: none;
+            border-bottom: none;
+        }
+
+        .decorative-corner.bottom-right {
+            bottom: 20px;
+            right: 20px;
+            border-left: none;
+            border-top: none;
+        }
+
+        @media (max-width: 768px) {
+            h1 {
+                font-size: 2.5rem;
+            }
+
+            .case-title {
+                font-size: 2rem;
+            }
+
+            .nav-container {
+                gap: 0.5rem;
+            }
+
+            .nav-btn {
+                font-size: 0.85rem;
+                padding: 0.5rem 1rem;
+            }
+
+            .case-card {
+                padding: 1.5rem;
+            }
+
+            table {
+                font-size: 0.9rem;
+            }
+
+            th, td {
+                padding: 0.8rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <h1>Падежи Польского</h1>
+            <p class="subtitle">Полный справочник с мнемоникой</p>
+        </div>
+    </header>
+
+    <nav>
+        <div class="nav-container">
+            <button class="nav-btn active" onclick="showCase('comparison')">📊 Сравнение</button>
+            <button class="nav-btn" onclick="showCase('biernik')">Biernik</button>
+            <button class="nav-btn" onclick="showCase('dopelniacz')">Dopełniacz</button>
+            <button class="nav-btn" onclick="showCase('narzednik')">Narzędnik</button>
+            <button class="nav-btn" onclick="showCase('miejscownik')">Miejscownik</button>
+        </div>
+    </nav>
+
+    <main class="container">
+        <!-- Comparison Section -->
+        <section id="comparison" class="case-section active">
+            <div class="case-card">
+                <h2 class="case-title">Сравнение падежей</h2>
+                <p class="case-subtitle">Понимание через контраст</p>
+
+                <div class="memory-box">
+                    <h3>Ключевая идея</h3>
+                    <p style="font-size: 1.2rem; line-height: 1.8;">
+                        <strong>BIERNIK</strong> = Активное действие НА объект (атакую, вижу, покупаю)<br>
+                        <strong>DOPEŁNIACZ</strong> = Пассивное восприятие ОТ объекта (слушаю, учусь, боюсь)<br>
+                        <strong>NARZĘDNIK</strong> = Действие С помощью/ВМЕСТЕ с объектом (пишу ручкой, иду с другом)<br>
+                        <strong>MIEJSCOWNIK</strong> = Местонахождение, место действия (думаю О, говорю О, нахожусь В/НА)
+                    </p>
+                </div>
+
+                <h3 style="font-family: 'Playfair Display', serif; font-size: 2rem; margin: 2rem 0 1rem; color: var(--primary);">Окончания в таблице</h3>
+                
+                <div style="overflow-x: auto;">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Род</th>
+                            <th>Biernik</th>
+                            <th>Dopełniacz</th>
+                            <th>Narzędnik</th>
+                            <th>Miejscownik</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><strong>М.р. одуш.</strong></td>
+                            <td>-ego / -a<br><small>(dobrego chłopaka)</small></td>
+                            <td>-ego / -a<br><small>(dobrego chłopaka)</small></td>
+                            <td>-ym / -em<br><small>(dobrym chłopcem)</small></td>
+                            <td>-ym / -e или -u<br><small>(dobrym chłopcu)</small></td>
+                        </tr>
+                        <tr>
+                            <td><strong>М.р. неодуш.</strong></td>
+                            <td>БЕЗ ИЗМЕНЕНИЙ<br><small>(nowy dom)</small></td>
+                            <td>-ego / -a или -u<br><small>(nowego domu)</small></td>
+                            <td>-ym / -em<br><small>(nowym domem)</small></td>
+                            <td>-ym / -e или -u<br><small>(nowym domu)</small></td>
+                        </tr>
+                        <tr>
+                            <td><strong>Женский</strong></td>
+                            <td>-ą / -ę<br><small>(dobrą dziewczynę)</small></td>
+                            <td>-ej / -y или -i<br><small>(dobrej dziewczyny)</small></td>
+                            <td>-ą / -ą<br><small>(dobrą dziewczyną)</small></td>
+                            <td>-ej / -e или -i<br><small>(dobrej dziewczynie)</small></td>
+                        </tr>
+                        <tr>
+                            <td><strong>Средний</strong></td>
+                            <td>БЕЗ ИЗМЕНЕНИЙ<br><small>(dobre dziecko)</small></td>
+                            <td>-ego / -a<br><small>(dobrego dziecka)</small></td>
+                            <td>-ym / -em<br><small>(dobrym dzieckiem)</small></td>
+                            <td>-ym / -u<br><small>(dobrym dziecku)</small></td>
+                        </tr>
+                    </tbody>
+                </table>
+                </div>
+
+                <h3 style="font-family: 'Playfair Display', serif; font-size: 2rem; margin: 3rem 0 1rem; color: var(--primary);">Сравнение на примерах</h3>
+                
+                <div class="comparison-grid">
+                    <div class="comparison-item">
+                        <div class="comparison-label">✅ Есть (mam)</div>
+                        <p><strong>Mam</strong> nowy komputer</p>
+                        <small>Biernik</small>
+                    </div>
+                    <div class="comparison-item">
+                        <div class="comparison-label">❌ Не имею (nie mam)</div>
+                        <p><strong>Nie mam</strong> nowego komputera</p>
+                        <small>Dopełniacz</small>
+                    </div>
+                    <div class="comparison-item">
+                        <div class="comparison-label">🤝 Делюсь (dzielę się)</div>
+                        <p><strong>Dzielę się</strong> nowym komputerem</p>
+                        <small>Narzędnik</small>
+                    </div>
+                    <div class="comparison-item">
+                        <div class="comparison-label">💭 Думаю о (myślę o)</div>
+                        <p><strong>Myślę o</strong> nowym komputerze</p>
+                        <small>Miejscownik</small>
+                    </div>
+                </div>
+
+                <div class="comparison-grid">
+                    <div class="comparison-item">
+                        <div class="comparison-label">👁️ Вижу</div>
+                        <p><strong>Widzę</strong> piękną kobietę</p>
+                        <small>Biernik</small>
+                    </div>
+                    <div class="comparison-item">
+                        <div class="comparison-label">🔍 Ищу</div>
+                        <p><strong>Szukam</strong> pięknej kobiety</p>
+                        <small>Dopełniacz</small>
+                    </div>
+                    <div class="comparison-item">
+                        <div class="comparison-label">🚶 Иду с</div>
+                        <p><strong>Idę z</strong> piękną kobietą</p>
+                        <small>Narzędnik</small>
+                    </div>
+                    <div class="comparison-item">
+                        <div class="comparison-label">💬 Говорю о</div>
+                        <p><strong>Mówię o</strong> pięknej kobiecie</p>
+                        <small>Miejscownik</small>
+                    </div>
+                </div>
+
+                <div class="memory-box" style="margin-top: 3rem;">
+                    <h3>Мнемоническое правило</h3>
+                    <p style="font-size: 1.3rem; line-height: 2;">
+                        <strong style="color: #c41e3a;">BIERNIK</strong> — <em>Бью, беру, вижу</em> — действую НА это<br>
+                        <strong style="color: #2d5f3f;">DOPEŁNIACZ</strong> — <em>Нет, боюсь, жду</em> — чего-то не хватает<br>
+                        <strong style="color: #d4af37;">NARZĘDNIK</strong> — <em>С помощью, вместе, являюсь</em> — инструмент<br>
+                        <strong style="color: #8b4513;">MIEJSCOWNIK</strong> — <em>О чём думаю, где нахожусь</em> — место и тема
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Biernik Section -->
+        <section id="biernik" class="case-section">
+            <div class="case-card">
+                <div class="decorative-corner top-left"></div>
+                <div class="decorative-corner bottom-right"></div>
+
+                <h2 class="case-title">Biernik</h2>
+                <p class="case-subtitle">Винительный падеж — падеж действия</p>
+
+                <div class="memory-box">
+                    <h3>Запомни так</h3>
+                    <p style="font-size: 1.2rem;">
+                        <strong>BIERNIK = БИТЬ</strong> — я активно действую на объект!<br>
+                        Изменяются только <strong>одушевленные мужчины</strong> и <strong>женщины</strong>.<br>
+                        Всё остальное остаётся как есть!
+                    </p>
+                </div>
+
+                <h3 style="font-family: 'Playfair Display', serif; font-size: 2rem; margin: 2rem 0 1rem; color: var(--primary);">Что изменяется?</h3>
+
+                <div class="feature-grid">
+                    <div class="feature-box">
+                        <div class="feature-icon">👨</div>
+                        <div class="feature-title">Одушевл. М.р.</div>
+                        <p><strong>-ego / -a</strong></p>
+                        <p>dobry chłopiec →<br>dobr<strong>ego</strong> chłopc<strong>a</strong></p>
+                    </div>
+                    <div class="feature-box">
+                        <div class="feature-icon">👩</div>
+                        <div class="feature-title">Женский род</div>
+                        <p><strong>-ą / -ę</strong></p>
+                        <p>dobra dziewczyna →<br>dobr<strong>ą</strong> dziewczyn<strong>ę</strong></p>
+                    </div>
+                    <div class="feature-box">
+                        <div class="feature-icon">📦</div>
+                        <div class="feature-title">Остальное</div>
+                        <p><strong>БЕЗ ИЗМЕНЕНИЙ</strong></p>
+                        <p>nowy dom →<br>nowy dom</p>
+                    </div>
+                </div>
+
+                <h3 style="font-family: 'Playfair Display', serif; font-size: 2rem; margin: 3rem 0 1rem; color: var(--primary);">Когда используется?</h3>
+
+                <div class="examples-grid">
+                    <div class="example">
+                        <strong>📍 Прямое дополнение</strong> — kogo? co?<br>
+                        Kupuję <strong>nowy samochód</strong>
+                    </div>
+                    <div class="example">
+                        <strong>👁️ Восприятие</strong> — widzieć, oglądać<br>
+                        Widzę <strong>piękną kobietę</strong>
+                    </div>
+                    <div class="example">
+                        <strong>❤️ Эмоции</strong> — kochać, lubić<br>
+                        Kocham <strong>mojego kota</strong>
+                    </div>
+                </div>
+
+                <h3 style="font-family: 'Playfair Display', serif; font-size: 2rem; margin: 3rem 0 1rem; color: var(--primary);">Глаголы с Biernik</h3>
+
+                <div class="verb-grid">
+                    <div class="verb-item"><strong>widzieć</strong><small>видеть</small></div>
+                    <div class="verb-item"><strong>kupować</strong><small>покупать</small></div>
+                    <div class="verb-item"><strong>czytać</strong><small>читать</small></div>
+                    <div class="verb-item"><strong>kochać</strong><small>любить</small></div>
+                    <div class="verb-item"><strong>lubić</strong><small>нравиться</small></div>
+                    <div class="verb-item"><strong>jeść</strong><small>есть</small></div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Dopełniacz Section -->
+        <section id="dopelniacz" class="case-section">
+            <div class="case-card">
+                <div class="decorative-corner top-left"></div>
+                <div class="decorative-corner bottom-right"></div>
+
+                <h2 class="case-title">Dopełniacz</h2>
+                <p class="case-subtitle">Родительный падеж — грустный брат винительного</p>
+
+                <div class="memory-box">
+                    <h3>Запомни так</h3>
+                    <p style="font-size: 1.2rem;">
+                        <strong>DOPEŁNIACZ = НЕТ</strong> — падеж отсутствия!<br>
+                        Если винительный — это <strong>"есть"</strong>, то родительный — это <strong>"нет"</strong>.<br>
+                        Также: <strong>ищу</strong> (не имею), <strong>боюсь</strong> (плохо).
+                    </p>
+                </div>
+
+                <h3 style="font-family: 'Playfair Display', serif; font-size: 2rem; margin: 2rem 0 1rem; color: var(--primary);">Окончания</h3>
+
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Род</th>
+                            <th>Прилагательное</th>
+                            <th>Существительное</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><strong>М.р. одушевл.</strong></td>
+                            <td>-ego</td>
+                            <td>-a</td>
+                        </tr>
+                        <tr>
+                            <td><strong>М.р. неодушевл.</strong></td>
+                            <td>-ego</td>
+                            <td>-a / -u</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Средний</strong></td>
+                            <td>-ego</td>
+                            <td>-a</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Женский</strong></td>
+                            <td>-ej</td>
+                            <td>-y / -i</td>
+                        </tr>
+                    </tbody>
+                </table>
+
+                <div class="memory-box">
+                    <h3>-a или -u?</h3>
+                    <p style="font-size: 1.1rem; line-height: 1.8;">
+                        <strong>-u:</strong> транспорт, абстракции, жидкости, дни недели<br>
+                        <strong>-a:</strong> месяцы, спорт, фрукты, валюта
+                    </p>
+                </div>
+
+                <h3 style="font-family: 'Playfair Display', serif; font-size: 2rem; margin: 3rem 0 1rem; color: var(--primary);">7 функций</h3>
+
+                <div class="feature-grid">
+                    <div class="feature-box">
+                        <div class="feature-icon">❌</div>
+                        <div class="feature-title">Отрицание</div>
+                        <p>Nie lubię mleka</p>
+                    </div>
+                    <div class="feature-box">
+                        <div class="feature-icon">🔍</div>
+                        <div class="feature-title">Скрытое НЕТ</div>
+                        <p>Szukam książki</p>
+                    </div>
+                    <div class="feature-box">
+                        <div class="feature-icon">🏷️</div>
+                        <div class="feature-title">Принадлежность</div>
+                        <p>Marker Ani</p>
+                    </div>
+                </div>
+
+                <h3 style="font-family: 'Playfair Display', serif; font-size: 2rem; margin: 3rem 0 1rem; color: var(--primary);">Предлоги</h3>
+
+                <div class="examples-grid">
+                    <div class="example">
+                        <strong>do</strong> — к, в<br>
+                        Idę <strong>do</strong> parku
+                    </div>
+                    <div class="example">
+                        <strong>od</strong> — от<br>
+                        <strong>Od</strong> czasu <strong>do</strong> czasu
+                    </div>
+                    <div class="example">
+                        <strong>z</strong> — из<br>
+                        Jestem <strong>z</strong> Polski
+                    </div>
+                </div>
+
+                <h3 style="font-family: 'Playfair Display', serif; font-size: 2rem; margin: 3rem 0 1rem; color: var(--primary);">Глаголы</h3>
+
+                <div class="verb-grid">
+                    <div class="verb-item"><strong>szukać</strong><small>искать</small></div>
+                    <div class="verb-item"><strong>potrzebować</strong><small>нуждаться</small></div>
+                    <div class="verb-item"><strong>słuchać</strong><small>слушать</small></div>
+                    <div class="verb-item"><strong>uczyć się</strong><small>учиться</small></div>
+                    <div class="verb-item"><strong>bać się</strong><small>бояться</small></div>
+                    <div class="verb-item"><strong>życzyć</strong><small>желать</small></div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Narzędnik Section -->
+        <section id="narzednik" class="case-section">
+            <div class="case-card">
+                <div class="decorative-corner top-left"></div>
+                <div class="decorative-corner bottom-right"></div>
+
+                <h2 class="case-title">Narzędnik</h2>
+                <p class="case-subtitle">Творительный падеж — падеж инструмента</p>
+
+                <div class="memory-box">
+                    <h3>Запомни так</h3>
+                    <p style="font-size: 1.2rem;">
+                        <strong>NARZĘDNIK = ИНСТРУМЕНТ</strong>!<br>
+                        Это падеж для того, <strong>ЧЕМ</strong> я делаю или <strong>С КЕМ/ЧЕМ</strong> вместе.<br>
+                        Ключевое слово: <strong>czym?</strong> (чем?)
+                    </p>
+                </div>
+
+                <h3 style="font-family: 'Playfair Display', serif; font-size: 2rem; margin: 2rem 0 1rem; color: var(--primary);">Окончания</h3>
+
+                <div class="feature-grid">
+                    <div class="feature-box">
+                        <div class="feature-icon">👨</div>
+                        <div class="feature-title">Мужской</div>
+                        <p><strong>-ym / -em</strong></p>
+                        <p>dobr<strong>ym</strong> chłopc<strong>em</strong></p>
+                    </div>
+                    <div class="feature-box">
+                        <div class="feature-icon">👩</div>
+                        <div class="feature-title">Женский</div>
+                        <p><strong>-ą / -ą</strong></p>
+                        <p>dobr<strong>ą</strong> dziewczyn<strong>ą</strong></p>
+                    </div>
+                    <div class="feature-box">
+                        <div class="feature-icon">📦</div>
+                        <div class="feature-title">Средний</div>
+                        <p><strong>-ym / -em</strong></p>
+                        <p>dobr<strong>ym</strong> dziecko<strong>em</strong></p>
+                    </div>
+                </div>
+
+                <h3 style="font-family: 'Playfair Display', serif; font-size: 2rem; margin: 3rem 0 1rem; color: var(--primary);">Когда используется?</h3>
+
+                <div class="feature-grid">
+                    <div class="feature-box">
+                        <div class="feature-icon">🔧</div>
+                        <div class="feature-title">Инструмент</div>
+                        <p>Piszę długopisem</p>
+                    </div>
+                    <div class="feature-box">
+                        <div class="feature-icon">👥</div>
+                        <div class="feature-title">Совместность</div>
+                        <p>Idę z przyjacielem</p>
+                    </div>
+                    <div class="feature-box">
+                        <div class="feature-icon">🎭</div>
+                        <div class="feature-title">Профессия</div>
+                        <p>Jestem nauczycielem</p>
+                    </div>
+                </div>
+
+                <h3 style="font-family: 'Playfair Display', serif; font-size: 2rem; margin: 3rem 0 1rem; color: var(--primary);">Предлоги</h3>
+
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Предлог</th>
+                            <th>Значение</th>
+                            <th>Примеры</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><strong>z</strong></td>
+                            <td>с</td>
+                            <td>z przyjacielem, z mamą</td>
+                        </tr>
+                        <tr>
+                            <td><strong>między</strong></td>
+                            <td>между</td>
+                            <td>między domami</td>
+                        </tr>
+                        <tr>
+                            <td><strong>nad</strong></td>
+                            <td>над</td>
+                            <td>nad morzem</td>
+                        </tr>
+                        <tr>
+                            <td><strong>pod</strong></td>
+                            <td>под</td>
+                            <td>pod stołem</td>
+                        </tr>
+                        <tr>
+                            <td><strong>przed</strong></td>
+                            <td>перед</td>
+                            <td>przed domem</td>
+                        </tr>
+                        <tr>
+                            <td><strong>za</strong></td>
+                            <td>за</td>
+                            <td>za domem</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </section>
+
+        <!-- Miejscownik Section -->
+        <section id="miejscownik" class="case-section">
+            <div class="case-card">
+                <div class="decorative-corner top-left"></div>
+                <div class="decorative-corner bottom-right"></div>
+
+                <h2 class="case-title">Miejscownik</h2>
+                <p class="case-subtitle">Предложный падеж — падеж местонахождения</p>
+
+                <div class="memory-box">
+                    <h3>Запомни так</h3>
+                    <p style="font-size: 1.2rem;">
+                        <strong>MIEJSCOWNIK = МЕСТО</strong>!<br>
+                        Падеж для ответа на <strong>ГДЕ?</strong> и <strong>О ЧЁМ?</strong><br>
+                        <strong>ВСЕГДА используется с предлогами!</strong>
+                    </p>
+                </div>
+
+                <h3 style="font-family: 'Playfair Display', serif; font-size: 2rem; margin: 2rem 0 1rem; color: var(--primary);">Окончания</h3>
+
+                <div class="feature-grid">
+                    <div class="feature-box">
+                        <div class="feature-icon">👨</div>
+                        <div class="feature-title">Мужской</div>
+                        <p><strong>-ym / -e или -u</strong></p>
+                        <p>dobr<strong>ym</strong> chłopc<strong>u</strong></p>
+                    </div>
+                    <div class="feature-box">
+                        <div class="feature-icon">👩</div>
+                        <div class="feature-title">Женский</div>
+                        <p><strong>-ej / -e или -i</strong></p>
+                        <p>dobr<strong>ej</strong> dziewczyn<strong>ie</strong></p>
+                    </div>
+                    <div class="feature-box">
+                        <div class="feature-icon">📦</div>
+                        <div class="feature-title">Средний</div>
+                        <p><strong>-ym / -u</strong></p>
+                        <p>dobr<strong>ym</strong> dziecko<strong>u</strong></p>
+                    </div>
+                </div>
+
+                <h3 style="font-family: 'Playfair Display', serif; font-size: 2rem; margin: 3rem 0 1rem; color: var(--primary);">Когда используется?</h3>
+
+                <div class="feature-grid">
+                    <div class="feature-box">
+                        <div class="feature-icon">📍</div>
+                        <div class="feature-title">Местонахождение</div>
+                        <p>Jestem <strong>w domu</strong></p>
+                    </div>
+                    <div class="feature-box">
+                        <div class="feature-icon">💭</div>
+                        <div class="feature-title">Тема</div>
+                        <p>Mówię <strong>o filmie</strong></p>
+                    </div>
+                    <div class="feature-box">
+                        <div class="feature-icon">🎯</div>
+                        <div class="feature-title">Мысли</div>
+                        <p>Myślę <strong>o tobie</strong></p>
+                    </div>
+                </div>
+
+                <h3 style="font-family: 'Playfair Display', serif; font-size: 2rem; margin: 3rem 0 1rem; color: var(--primary);">Предлоги</h3>
+
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Предлог</th>
+                            <th>Значение</th>
+                            <th>Примеры</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><strong>w</strong></td>
+                            <td>в (внутри)</td>
+                            <td>w domu, w Polsce, w szkole</td>
+                        </tr>
+                        <tr>
+                            <td><strong>na</strong></td>
+                            <td>на</td>
+                            <td>na stole, na uniwersytecie</td>
+                        </tr>
+                        <tr>
+                            <td><strong>o</strong></td>
+                            <td>о (тема)</td>
+                            <td>o miłości, o filmie, o tobie</td>
+                        </tr>
+                        <tr>
+                            <td><strong>przy</strong></td>
+                            <td>при, у</td>
+                            <td>przy stole, przy oknie</td>
+                        </tr>
+                        <tr>
+                            <td><strong>po</strong></td>
+                            <td>после, по</td>
+                            <td>po lekcji, po obiedzie</td>
+                        </tr>
+                    </tbody>
+                </table>
+
+                <div class="memory-box">
+                    <h3>W или NA?</h3>
+                    <p style="font-size: 1.1rem; line-height: 1.8;">
+                        <strong>W:</strong> закрытые помещения (w domu, w szkole), страны, города<br>
+                        <strong>NA:</strong> учреждения (na uniwersytecie), мероприятия (na koncercie), открытые пространства (na plaży), транспорт (na rowerze)
+                    </p>
+                </div>
+
+                <h3 style="font-family: 'Playfair Display', serif; font-size: 2rem; margin: 3rem 0 1rem; color: var(--primary);">Глаголы</h3>
+
+                <div class="examples-grid">
+                    <div class="example">
+                        <strong>💭 Мысли:</strong> myśleć o, marzyć o, pamiętać o
+                    </div>
+                    <div class="example">
+                        <strong>💬 Речь:</strong> mówić o, opowiadać o, rozmawiać o
+                    </div>
+                    <div class="example">
+                        <strong>📍 Место:</strong> być w/na, mieszkać w, siedzieć na
+                    </div>
+                </div>
+
+                <h3 style="font-family: 'Playfair Display', serif; font-size: 2rem; margin: 3rem 0 1rem; color: var(--primary);">Окончание -E или -U в мужском роде?</h3>
+
+                <div class="memory-box">
+                    <h3>Общее правило</h3>
+                    <p style="font-size: 1.1rem; line-height: 1.8;">
+                        Это один из самых сложных моментов польского языка, потому что чёткого правила нет!<br>
+                        Нужно запоминать конкретные слова. Но есть некоторые закономерности:
+                    </p>
+                </div>
+
+                <h4 style="font-family: 'Playfair Display', serif; font-size: 1.5rem; margin: 2rem 0 1rem; color: var(--secondary);">📋 Слова с окончанием -U</h4>
+
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Категория</th>
+                            <th>Примеры</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><strong>🏠 Места/помещения</strong></td>
+                            <td>dom → w dom<strong>u</strong>, pokój → w poko<strong>ju</strong>, las → w les<strong>ie</strong> (НО!), ogród → w ogrodz<strong>ie</strong> (НО!), sklep → w sklep<strong>ie</strong> (НО!)</td>
+                        </tr>
+                        <tr>
+                            <td><strong>📅 Временные периоды</strong></td>
+                            <td>rok → w rok<strong>u</strong>, miesiąc → w miesiąc<strong>u</strong>, tydzień → w tygodni<strong>u</strong>, dzień → w dn<strong>iu</strong></td>
+                        </tr>
+                        <tr>
+                            <td><strong>🌍 Некоторые страны/города</strong></td>
+                            <td>Kraków → w Krakow<strong>ie</strong> (НО!), Gdańsk → w Gdańsk<strong>u</strong>, Wrocław → we Wrocławi<strong>u</strong></td>
+                        </tr>
+                        <tr>
+                            <td><strong>🎓 Абстрактные понятия</strong></td>
+                            <td>umysł → w umyśl<strong>e</strong> (НО!), świat → na świec<strong>ie</strong> (НО!), czas → w czasi<strong>e</strong> (НО!)</td>
+                        </tr>
+                        <tr>
+                            <td><strong>🏛️ Общественные места</strong></td>
+                            <td>dworzec → na dworc<strong>u</strong>, lotnisko → na lotnis<strong>ku</strong> (средний!), port → w porci<strong>e</strong> (НО!)</td>
+                        </tr>
+                        <tr>
+                            <td><strong>🌲 Природа</strong></td>
+                            <td>las → w les<strong>ie</strong> (НО с чередованием!), brzeg → na brzeg<strong>u</strong>, wiatr → na wietrz<strong>e</strong> (НО!)</td>
+                        </tr>
+                        <tr>
+                            <td><strong>📏 Измерения</strong></td>
+                            <td>metr → na metr<strong>ze</strong> (НО!), krok → w krok<strong>u</strong>, punkt → w punkc<strong>ie</strong> (НО!)</td>
+                        </tr>
+                    </tbody>
+                </table>
+
+                <h4 style="font-family: 'Playfair Display', serif; font-size: 1.5rem; margin: 2rem 0 1rem; color: var(--secondary);">📋 Слова с окончанием -E (и чередованием)</h4>
+
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Тип чередования</th>
+                            <th>Примеры</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><strong>k → c</strong></td>
+                            <td>park → w parc<strong>e</strong>, rynek → na rynk<strong>u</strong> (НО!), język → w język<strong>u</strong> (НО!)</td>
+                        </tr>
+                        <tr>
+                            <td><strong>g → dz/ż</strong></td>
+                            <td>pociąg → w pociąg<strong>u</strong> (НО!), róg → w roż<strong>e</strong>, próg → na prog<strong>u</strong> (НО!)</td>
+                        </tr>
+                        <tr>
+                            <td><strong>ch → sz</strong></td>
+                            <td>brzuch → w brzusz<strong>e</strong>, dach → na dach<strong>u</strong> (НО!)</td>
+                        </tr>
+                        <tr>
+                            <td><strong>t → ci</strong></td>
+                            <td>świat → na świec<strong>ie</strong>, lot → w loci<strong>e</strong></td>
+                        </tr>
+                        <tr>
+                            <td><strong>d → dzi</strong></td>
+                            <td>ogród → w ogrodz<strong>ie</strong>, przód → z przod<strong>u</strong> (НО!)</td>
+                        </tr>
+                        <tr>
+                            <td><strong>st → ści</strong></td>
+                            <td>most → na mości<strong>e</strong>, list → w liści<strong>e</strong></td>
+                        </tr>
+                        <tr>
+                            <td><strong>sł → śl</strong></td>
+                            <td>umysł → w umyśl<strong>e</strong></td>
+                        </tr>
+                    </tbody>
+                </table>
+
+                <h4 style="font-family: 'Playfair Display', serif; font-size: 1.5rem; margin: 2rem 0 1rem; color: var(--secondary);">🎯 Самые частые слова — ЗАПОМНИ!</h4>
+
+                <div class="comparison-grid">
+                    <div class="comparison-item">
+                        <div class="comparison-label">✅ Окончание -U</div>
+                        <p style="text-align: left; line-height: 1.8;">
+                            w dom<strong>u</strong> (в доме)<br>
+                            w poko<strong>ju</strong> (в комнате)<br>
+                            w rok<strong>u</strong> (в году)<br>
+                            w miesiąc<strong>u</strong> (в месяце)<br>
+                            w tygodni<strong>u</strong> (на неделе)<br>
+                            w kąc<strong>ie</strong> (в углу) - НО с -e!<br>
+                            na dworc<strong>u</strong> (на вокзале)<br>
+                            w Gdańsk<strong>u</strong> (в Гданьске)<br>
+                            we Wrocławi<strong>u</strong> (во Вроцлаве)
+                        </p>
+                    </div>
+                    <div class="comparison-item">
+                        <div class="comparison-label">✅ Окончание -E (с чередованием)</div>
+                        <p style="text-align: left; line-height: 1.8;">
+                            w parc<strong>e</strong> (в парке) — k→c<br>
+                            w les<strong>ie</strong> (в лесу) — s→si<br>
+                            w ogrodz<strong>ie</strong> (в саду) — d→dzi<br>
+                            w sklep<strong>ie</strong> (в магазине) — p→pi<br>
+                            w Krakow<strong>ie</strong> (в Кракове) — w→wi<br>
+                            na świec<strong>ie</strong> (в мире) — t→ci<br>
+                            na mości<strong>e</strong> (на мосту) — st→ści<br>
+                            w czasi<strong>e</strong> (во времени) — s→si<br>
+                            w roż<strong>e</strong> (в углу) — g→ż
+                        </p>
+                    </div>
+                </div>
+
+                <div class="memory-box">
+                    <h3>Практическое правило для запоминания</h3>
+                    <p style="font-size: 1.1rem; line-height: 1.8;">
+                        <strong style="color: var(--primary);">Стратегия 1:</strong> Если слово заканчивается на <strong>k, g, ch, t, d, st, sł</strong> и происходит чередование согласной — скорее всего будет <strong>-E</strong><br><br>
+                        
+                        <strong style="color: var(--primary);">Стратегия 2:</strong> Если слово обозначает временной период (rok, miesiąc, tydzień, dzień) — всегда <strong>-U</strong><br><br>
+                        
+                        <strong style="color: var(--primary);">Стратегия 3:</strong> Слова типа "помещение внутри дома" (pokój, gabinet) часто берут <strong>-U</strong>, но есть исключения!<br><br>
+                        
+                        <strong style="color: #c41e3a;">НО ЛУЧШЕ ВСЕГО:</strong> Учить каждое слово отдельно с его падежной формой! Это единственный надёжный способ.
+                    </p>
+                </div>
+
+                <h4 style="font-family: 'Playfair Display', serif; font-size: 1.5rem; margin: 2rem 0 1rem; color: var(--secondary);">⚠️ Коварные пары (похожие, но разные!)</h4>
+
+                <div class="examples-grid">
+                    <div class="example">
+                        <strong>las → w lesie</strong> (лес — с чередованием s→si)<br>
+                        <strong>las → w leśie</strong> (ошибка! Правильно: lesie)
+                    </div>
+                    <div class="example">
+                        <strong>dom → w domu</strong> (дом — нет чередования)<br>
+                        <strong>sklep → w sklepie</strong> (магазин — с чередованием p→pi)
+                    </div>
+                    <div class="example">
+                        <strong>rok → w roku</strong> (год)<br>
+                        <strong>wiek → w wieku</strong> (век)
+                    </div>
+                    <div class="example">
+                        <strong>park → w parku</strong> (ошибка!)<br>
+                        <strong>park → w parce</strong> (правильно — k→c)
+                    </div>
+                    <div class="example">
+                        <strong>Gdańsk → w Gdańsku</strong><br>
+                        <strong>Kraków → w Krakowie</strong> (w→wi)
+                    </div>
+                    <div class="example">
+                        <strong>język → w języku</strong> (язык — исключение, нет чередования!)<br>
+                        <strong>rynek → na rynku</strong> (рынок — тоже исключение!)
+                    </div>
+                </div>
+
+                <div class="memory-box" style="margin-top: 3rem; background: linear-gradient(135deg, #ffe6e6 0%, #ffcccc 100%);">
+                    <h3>🔴 Самые частые ошибки!</h3>
+                    <p style="font-size: 1.1rem; line-height: 1.8;">
+                        ❌ w park<strong>u</strong> → ✅ w parc<strong>e</strong><br>
+                        ❌ w les<strong>u</strong> → ✅ w les<strong>ie</strong><br>
+                        ❌ w sklep<strong>u</strong> → ✅ w sklep<strong>ie</strong><br>
+                        ❌ w ogród<strong>u</strong> → ✅ w ogrodz<strong>ie</strong><br>
+                        ❌ w świat<strong>u</strong> → ✅ na świec<strong>ie</strong><br>
+                        ❌ w czas<strong>u</strong> → ✅ w czasi<strong>e</strong> (НО: na czas<strong>ie</strong> тоже встречается!)<br>
+                        ❌ w Krakow<strong>u</strong> → ✅ w Krakow<strong>ie</strong>
+                    </p>
+                </div>
+
+                <div class="memory-box" style="margin-top: 3rem;">
+                    <h3>Мнемоника</h3>
+                    <p style="font-size: 1.2rem; line-height: 1.8;">
+                        📍 <strong>MIEJSCE = МЕСТО</strong><br>
+                        🔗 <strong>ВСЕГДА С ПРЕДЛОГОМ!</strong><br>
+                        💭 <strong>O czym?</strong> (О чём?) → Miejscownik<br>
+                        📍 <strong>Gdzie?</strong> (Где?) → Miejscownik<br><br>
+                        
+                        <strong style="color: #c41e3a;">Для -E/-U:</strong><br>
+                        🏠 Временные периоды → <strong>-U</strong> (rok, miesiąc, tydzień)<br>
+                        🔄 Чередование согласной → скорее <strong>-E</strong> (park→parce, las→lesie)<br>
+                        📚 Всё остальное → <strong>учить отдельно!</strong>
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Quiz Section -->
+        <div class="quiz-section">
+            <h2 style="font-family: 'Playfair Display', serif; font-size: 2.5rem; margin-bottom: 1rem;">Проверь себя!</h2>
+            <p style="font-size: 1.2rem; margin-bottom: 1rem;">
+                Теперь, когда ты изучил все падежи, пора проверить свои знания!
+            </p>
+            <button class="quiz-btn" onclick="alert('Попробуй составить свои примеры для каждого падежа! 😊\n\nBiernik: Widzę ___\nDopełniacz: Nie mam ___\nNarzędnik: Piszę ___\nMiejscownik: Jestem w ___')">
+                Начать практику
+            </button>
+        </div>
+    </main>
+
+    <footer>
+        <p>&copy; 2025 Падежи польского языка | Преподаватель: Веренич Павел</p>
+        <p style="margin-top: 0.5rem; opacity: 0.8;">Учитесь с удовольствием! 🇵🇱</p>
+    </footer>
+
+    <script>
+        function showCase(caseId) {
+            // Hide all sections
+            document.querySelectorAll('.case-section').forEach(section => {
+                section.classList.remove('active');
+            });
+
+            // Remove active from all buttons
+            document.querySelectorAll('.nav-btn').forEach(btn => {
+                btn.classList.remove('active');
+            });
+
+            // Show selected section
+            document.getElementById(caseId).classList.add('active');
+
+            // Add active to clicked button
+            event.target.classList.add('active');
+
+            // Scroll to top
+            window.scrollTo({
+                top: 0,
+                behavior: 'smooth'
+            });
+        }
+    </script>
+</body>
+</html>
